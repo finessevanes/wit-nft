@@ -22,7 +22,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
       chainId: 1337
     },
     ropsten:{
-      url: "https://ropsten.infura.io/v3/49ad3b65e8a14d7883cf8390f24bb502",
+      url: "https://ropsten.infura.io/v3/84c6cf11c80f4c29bec4bcde9ec9f699",
       accounts: [`0x${process.env.REACT_APP_PRIVATE_KEY}`]
     }
   }
