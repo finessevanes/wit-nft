@@ -1,18 +1,29 @@
-const hre = require("hardhat");
+const main = async () => {
+  const nftContractFactory = await hre.ethers.getContractFactory('ClipArtNumber');
+  const nftContract = await nftContractFactory.deploy();
+  await nftContract.deployed();
+  console.log("Contract deployed to:", nftContract.address);
 
-async function main() {
+  // Call the function.
+  let txn = await nftContract.mintNFT()
+  // Wait for it to be mined.
+  await txn.wait()
+  console.log("Minted NFT #1")
 
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  txn = await nftContract.mintNFT()
+  // Wait for it to be mined.
+  await txn.wait()
+  console.log("Minted NFT #2")
+};
 
-  await greeter.deployed();
-
-  console.log("Greeter deployed to:", greeter.address);
-}
-
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
+const runMain = async () => {
+  try {
+    await main();
+    process.exit(0);
+  } catch (error) {
+    console.log(error);
     process.exit(1);
-  });
+  }
+};
+
+runMain();
