@@ -12,6 +12,8 @@ const main = async () => {
   // wait for it to finsih
   await txn.wait()
 
+  console.log("this finished")
+
   // send money to someone else
   // will need to get the other contract too 
   // call  a function from there to send payment

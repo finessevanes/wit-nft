@@ -1,11 +1,12 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+// import clipArtNumber from './utils/ClipArtNumber.json';
+// import { ethers } from "ethers";
 
 function App() {
-
   const [currentAccount, setCurrentAccount] = useState("");
 
-  const checkIfWalletIsConnected =  async () => {
+  const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
 
     if (!ethereum) {
@@ -16,7 +17,6 @@ function App() {
     }
     const accounts = await ethereum.request({ method: 'eth_accounts' });
 
-
     if (accounts.length !== 0) {
       const account = accounts[0];
       console.log("Found an authorized account:", account);
@@ -25,34 +25,42 @@ function App() {
       console.log("No authorized account found")
     }
   }
-  const connectWallet = async () => {
+
+  const connectWallet =  () => {
     try {
-      const { ethereum } = window;
+      // const { ethereum } = window;
 
-      if (!ethereum) {
-        alert("Get MetaMask!");
-        return;
-      }
+      // if (!ethereum) {
+      //   alert("Get MetaMask!");
+      //   return;
+      // }
 
-      const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+      console.log("test")
+      /*
+      * Fancy method to request access to account.
+      */
+    //   const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
-      console.log("Connected", accounts[0]);
-      setCurrentAccount(accounts[0]); 
+    //   /*
+    //   * Boom! This should print out public address once we authorize Metamask.
+    //   */
+    //   console.log("Connected", accounts[0]);
+    //   setCurrentAccount(accounts[0]); 
     } catch (error) {
       console.log(error)
     }
   }
 
   const renderNotConnectedContainer = () => (
-    <button onClick={connectWallet} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+    <button onClick={connectWallet} className="">
       Connect to Wallet
     </button>
   );
 
+  // useEffect(() => {
+  //   checkIfWalletIsConnected()
+  // }, [])
 
-  useEffect(() => {
-    checkIfWalletIsConnected()
-  }, [])
   return (
     <div className="flex h-screen bg-gray-200">
       <div className="m-auto">
@@ -62,21 +70,16 @@ function App() {
             {currentAccount === "" ? (
             renderNotConnectedContainer()
           ) : (
-            <button onClick={null} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={null} className="cta-button connect-wallet-button">
               Mint NFT
             </button>
           )}
-
             </div>
           </form>
         </div>
       </div>
-
     </div>
   );
 }
 
 export default App;
-
-
-
