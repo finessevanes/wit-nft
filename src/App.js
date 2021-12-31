@@ -1,8 +1,10 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { ethers } from 'ethers';
+import clipArtNumber from './utils/ClipArtNumber.json';
 
 const App = () => {
-
+  const CONTRACT_ADDRESS = "0xB1837452D1C03A83528A35C200044a3553d1AC52"
   const [currentAccount, setCurrentAccount] = useState("");
 
   const checkIfWalletIsConnected = async () => {
@@ -42,8 +44,28 @@ const App = () => {
     }
   }
 
-  const mintNFT = () => {
-    console.log("mint nft")
+  const askContractToMintNFT = async () => {
+    try {
+      const { ethereum } = window;
+
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, clipArtNumber.abi, signer);
+
+        console.log("calling mintNFT()");
+        let nftTxn = await connectedContract.mintNFT();
+
+        console.log("minning");
+        await nftTxn.wait();
+
+        console.log(`mined: ${nftTxn.hash}`);
+        console.log(`keys: ${Object.keys(nftTxn)}`)
+      }
+
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   const renderNotConnectedContainer = () => (
@@ -64,8 +86,8 @@ const App = () => {
               {currentAccount === "" ? (
                 renderNotConnectedContainer()
               ) : (
-                <button onClick={mintNFT} className="bg-blue-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                  Mint NFT
+                <button onClick={askContractToMintNFT} className="bg-blue-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                  Mint NFFT
                 </button>
               )}
             </div>
