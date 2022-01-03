@@ -7,27 +7,27 @@ const main = async () => {
   console.log(`the nftContract.address: ${nftContract.address}`);
 
 
-  let txn = await nftContract.mintNFT()
-  await txn.wait()
-  console.log("%%%%%%%% 1ST NFT MINTED %%%%%%%%%");
-  txn = await nftContract.mintNFT()
-  await txn.wait()
-  console.log("%%%%%%%%% 2ND NFT MINTED %%%%%%%%");
-  txn = await nftContract.mintNFT()
-  await txn.wait()
-  console.log("%%%%%%%%% 3RD NFT MINTED %%%%%%%%");
-  txn = await nftContract.mintNFT()
-  await txn.wait()
-  console.log("%%%%%%%%% 4TH NFT MINTED %%%%%%%%");
-  txn = await nftContract.mintNFT()
-  await txn.wait()
-  console.log("%%%%%%%%% 5TH NFT MINTED %%%%%%%%");
-  txn = await nftContract.mintNFT()
-  await txn.wait()
-  console.log("%%%%%%%%% 6TH NFT MINTED %%%%%%%%");
-  txn = await nftContract.mintNFT()
-  await txn.wait()
-  console.log("%%%%%%%%% SHOULD FAIL");
+  // let txn = await nftContract.mintNFT()
+  // await txn.wait()
+  // console.log("%%%%%%%% 1ST NFT MINTED %%%%%%%%%");
+  // txn = await nftContract.mintNFT()
+  // await txn.wait()
+  // console.log("%%%%%%%%% 2ND NFT MINTED %%%%%%%%");
+  // txn = await nftContract.mintNFT()
+  // await txn.wait()
+  // console.log("%%%%%%%%% 3RD NFT MINTED %%%%%%%%");
+  // txn = await nftContract.mintNFT()
+  // await txn.wait()
+  // console.log("%%%%%%%%% 4TH NFT MINTED %%%%%%%%");
+  // txn = await nftContract.mintNFT()
+  // await txn.wait()
+  // console.log("%%%%%%%%% 5TH NFT MINTED %%%%%%%%");
+  // txn = await nftContract.mintNFT()
+  // await txn.wait()
+  // console.log("%%%%%%%%% 6TH NFT MINTED %%%%%%%%");
+  // txn = await nftContract.mintNFT()
+  // await txn.wait()
+  // console.log("%%%%%%%%% SHOULD FAIL");
 
   
 
