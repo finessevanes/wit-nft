@@ -6,13 +6,31 @@ const main = async () => {
   await nftContract.deployed();
   console.log(`the nftContract.address: ${nftContract.address}`);
 
-  // call the minting function from ClipArtNumber
-  let txn = await nftContract.mintNFT();
 
-  // wait for it to finsih
+  let txn = await nftContract.mintNFT()
   await txn.wait()
+  console.log("%%%%%%%% 1ST NFT MINTED %%%%%%%%%");
+  txn = await nftContract.mintNFT()
+  await txn.wait()
+  console.log("%%%%%%%%% 2ND NFT MINTED %%%%%%%%");
+  txn = await nftContract.mintNFT()
+  await txn.wait()
+  console.log("%%%%%%%%% 3RD NFT MINTED %%%%%%%%");
+  txn = await nftContract.mintNFT()
+  await txn.wait()
+  console.log("%%%%%%%%% 4TH NFT MINTED %%%%%%%%");
+  txn = await nftContract.mintNFT()
+  await txn.wait()
+  console.log("%%%%%%%%% 5TH NFT MINTED %%%%%%%%");
+  txn = await nftContract.mintNFT()
+  await txn.wait()
+  console.log("%%%%%%%%% 6TH NFT MINTED %%%%%%%%");
+  txn = await nftContract.mintNFT()
+  await txn.wait()
+  console.log("%%%%%%%%% SHOULD FAIL");
 
-  console.log("the nft minted:")
+  
+
 
   // send money to someone else
   // will need to get the other contract too 
